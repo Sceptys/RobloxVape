@@ -1678,63 +1678,59 @@ do
 end
 
 run(function()
-	local handsquare = Instance.new("ImageLabel")
-	handsquare.Size = UDim2.new(0, 26, 0, 27)
-	handsquare.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
-	handsquare.Position = UDim2.new(0, 72, 0, 44)
-	handsquare.Parent = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
-	local handround = Instance.new("UICorner")
-	handround.CornerRadius = UDim.new(0, 4)
-	handround.Parent = handsquare
-	local helmetsquare = handsquare:Clone()
-	helmetsquare.Position = UDim2.new(0, 100, 0, 44)
-	helmetsquare.Parent = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
-	local chestplatesquare = handsquare:Clone()
-	chestplatesquare.Position = UDim2.new(0, 127, 0, 44)
-	chestplatesquare.Parent = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
-	local bootssquare = handsquare:Clone()
-	bootssquare.Position = UDim2.new(0, 155, 0, 44)
-	bootssquare.Parent = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
-	local uselesssquare = handsquare:Clone()
-	uselesssquare.Position = UDim2.new(0, 182, 0, 44)
-	uselesssquare.Parent = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
+	-- Funkcja do tworzenia stylizowanych elementów UI
+	local function createStyledSquare(parent, position, size)
+		local square = Instance.new("ImageLabel")
+		square.Size = size or UDim2.new(0, 50, 0, 50)  -- Większy rozmiar elementów
+		square.BackgroundColor3 = Color3.fromRGB(45, 45, 48)  -- Zmieniony kolor tła
+		square.Position = position
+		square.Parent = parent
+		square.BorderSizePixel = 0
+		square.ImageTransparency = 0.1  -- Delikatna przezroczystość obrazu
+
+		local corner = Instance.new("UICorner")
+		corner.CornerRadius = UDim.new(0, 12)  -- Większy promień zaokrąglenia dla bardziej nowoczesnego wyglądu
+		corner.Parent = square
+
+		local stroke = Instance.new("UIStroke")
+		stroke.Color = Color3.fromRGB(255, 255, 255)  -- Biały obrys
+		stroke.Thickness = 2  -- Grubość obrysu
+		stroke.Parent = square
+
+		return square
+	end
+
+	local mainInfo = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo
+	local squares = {
+		handsquare = createStyledSquare(mainInfo, UDim2.new(0, 50, 0, 50)),
+		helmetsquare = createStyledSquare(mainInfo, UDim2.new(0, 110, 0, 50)),  -- Zwiększony odstęp
+		chestplatesquare = createStyledSquare(mainInfo, UDim2.new(0, 170, 0, 50)),  -- Zwiększony odstęp
+		bootssquare = createStyledSquare(mainInfo, UDim2.new(0, 230, 0, 50)),  -- Zwiększony odstęp
+		uselesssquare = createStyledSquare(mainInfo, UDim2.new(0, 290, 0, 50))  -- Zwiększony odstęp
+	}
+
 	local oldupdate = vapeTargetInfo.UpdateInfo
 	vapeTargetInfo.UpdateInfo = function(tab, targetsize)
 		local bkgcheck = vapeTargetInfo.Object.GetCustomChildren().Frame.MainInfo.BackgroundTransparency == 1
-		handsquare.BackgroundTransparency = bkgcheck and 1 or 0
-		helmetsquare.BackgroundTransparency = bkgcheck and 1 or 0
-		chestplatesquare.BackgroundTransparency = bkgcheck and 1 or 0
-		bootssquare.BackgroundTransparency = bkgcheck and 1 or 0
-		uselesssquare.BackgroundTransparency = bkgcheck and 1 or 0
+		for _, square in pairs(squares) do
+			square.BackgroundTransparency = bkgcheck and 1 or 0
+		end
+
 		pcall(function()
-			for i,v in pairs(shared.VapeTargetInfo.Targets) do
+			for _, v in pairs(shared.VapeTargetInfo.Targets) do
 				local inventory = store.inventories[v.Player] or {}
-					if inventory.hand then
-						handsquare.Image = bedwars.getIcon(inventory.hand, true)
-					else
-						handsquare.Image = ""
-					end
-					if inventory.armor[4] then
-						helmetsquare.Image = bedwars.getIcon(inventory.armor[4], true)
-					else
-						helmetsquare.Image = ""
-					end
-					if inventory.armor[5] then
-						chestplatesquare.Image = bedwars.getIcon(inventory.armor[5], true)
-					else
-						chestplatesquare.Image = ""
-					end
-					if inventory.armor[6] then
-						bootssquare.Image = bedwars.getIcon(inventory.armor[6], true)
-					else
-						bootssquare.Image = ""
-					end
+				squares.handsquare.Image = inventory.hand and bedwars.getIcon(inventory.hand, true) or ""
+				squares.helmetsquare.Image = inventory.armor[4] and bedwars.getIcon(inventory.armor[4], true) or ""
+				squares.chestplatesquare.Image = inventory.armor[5] and bedwars.getIcon(inventory.armor[5], true) or ""
+				squares.bootssquare.Image = inventory.armor[6] and bedwars.getIcon(inventory.armor[6], true) or ""
 				break
 			end
 		end)
+
 		return oldupdate(tab, targetsize)
 	end
 end)
+
 
 GuiLibrary.RemoveObject("SilentAimOptionsButton")
 GuiLibrary.RemoveObject("ReachOptionsButton")
