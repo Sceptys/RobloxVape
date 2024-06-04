@@ -64,8 +64,8 @@ local vapeAssetTable = {
 	["vape/assets/TargetIcon2.png"] = "rbxassetid://13350787228",
 	["vape/assets/TargetIcon3.png"] = "rbxassetid://13350787729",
 	["vape/assets/TargetIcon4.png"] = "rbxassetid://13350788379",
-	["vape/assets/TargetInfoIcon1.png"] = "rbxassetid://13350788860",
-	["vape/assets/TargetInfoIcon2.png"] = "rbxassetid://13350789239",
+	["vape/assets/targetniggerIcon1.png"] = "rbxassetid://13350788860",
+	["vape/assets/targetniggerIcon2.png"] = "rbxassetid://13350789239",
 	["vape/assets/TextBoxBKG.png"] = "rbxassetid://13350789732",
 	["vape/assets/TextBoxBKG2.png"] = "rbxassetid://13350790229",
 	["vape/assets/TextGUIIcon1.png"] = "rbxassetid://13350790634",
@@ -602,9 +602,9 @@ OnlineProfilesButtonImage.Parent = OnlineProfilesButton
 local OnlineProfilesbuttonround1 = Instance.new("UICorner")
 OnlineProfilesbuttonround1.CornerRadius = UDim.new(0, 5)
 OnlineProfilesbuttonround1.Parent = OnlineProfilesButton
-local OnlineProfilesbuttonTargetInfoMainInfoCorner = Instance.new("UICorner")
-OnlineProfilesbuttonTargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 5)
-OnlineProfilesbuttonTargetInfoMainInfoCorner.Parent = OnlineProfilesButtonBKG
+local OnlineProfilesbuttontargetniggerMainInfoCorner = Instance.new("UICorner")
+OnlineProfilesbuttontargetniggerMainInfoCorner.CornerRadius = UDim.new(0, 5)
+OnlineProfilesbuttontargetniggerMainInfoCorner.Parent = OnlineProfilesButtonBKG
 local OnlineProfilesFrame = Instance.new("Frame")
 OnlineProfilesFrame.Size = UDim2.new(0, 660, 0, 445)
 OnlineProfilesFrame.Position = UDim2.new(0.5, -330, 0.5, -223)
@@ -782,12 +782,12 @@ OnlineProfilesButton.MouseButton1Click:Connect(function()
 			local profileround = Instance.new("UICorner")
 			profileround.CornerRadius = UDim.new(0, 4)
 			profileround.Parent = profilebox
-			local profileTargetInfoMainInfoCorner = Instance.new("UICorner")
-			profileTargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 4)
-			profileTargetInfoMainInfoCorner.Parent = profiledownload
-			local profileTargetInfoHealthBackgroundCorner = Instance.new("UICorner")
-			profileTargetInfoHealthBackgroundCorner.CornerRadius = UDim.new(0, 4)
-			profileTargetInfoHealthBackgroundCorner.Parent = profiledownloadbkg
+			local profiletargetniggerMainInfoCorner = Instance.new("UICorner")
+			profiletargetniggerMainInfoCorner.CornerRadius = UDim.new(0, 4)
+			profiletargetniggerMainInfoCorner.Parent = profiledownload
+			local profiletargetniggerHealthBackgroundCorner = Instance.new("UICorner")
+			profiletargetniggerHealthBackgroundCorner.CornerRadius = UDim.new(0, 4)
+			profiletargetniggerHealthBackgroundCorner.Parent = profiledownloadbkg
 		end
 		profilesloaded = true
 	end
@@ -1339,163 +1339,163 @@ local function newHealthColor(percent)
 	return Color3.fromRGB(255, 255, 0):lerp(Color3.fromRGB(249, 57, 55), (0.5 - percent) / 0.5)
 end
 
-local TargetInfo = GuiLibrary.CreateCustomWindow({
+local targetnigger = GuiLibrary.CreateCustomWindow({
 	Name = "Target Info",
-	Icon = "vape/assets/TargetInfoIcon1.png",
+	Icon = "vape/assets/targetniggerIcon1.png",
 	IconSize = 16
 })
-local TargetInfoBackground = {Enabled = false}
-local TargetInfoMainFrame = Instance.new("Frame")
-TargetInfoMainFrame.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
-TargetInfoMainFrame.BorderSizePixel = 0
-TargetInfoMainFrame.BackgroundTransparency = 1
-TargetInfoMainFrame.Size = UDim2.new(0, 220, 0, 72)
-TargetInfoMainFrame.Position = UDim2.new(0, 0, 0, 5)
-TargetInfoMainFrame.Parent = TargetInfo.GetCustomChildren()
-local TargetInfoMainInfo = Instance.new("Frame")
-TargetInfoMainInfo.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
-TargetInfoMainInfo.Size = UDim2.new(0, 220, 0, 80)
-TargetInfoMainInfo.BackgroundTransparency = 0.25
-TargetInfoMainInfo.Position = UDim2.new(0, 0, 0, 0)
-TargetInfoMainInfo.Name = "MainInfo"
-TargetInfoMainInfo.Parent = TargetInfoMainFrame
-local TargetInfoName = Instance.new("TextLabel")
-TargetInfoName.TextSize = 14
-TargetInfoName.Font = Enum.Font.Arial
-TargetInfoName.TextColor3 = Color3.fromRGB(162, 162, 162)
-TargetInfoName.Position = UDim2.new(0, 70, 0, 10)
-TargetInfoName.TextStrokeTransparency = 1
-TargetInfoName.BackgroundTransparency = 1
-TargetInfoName.Size = UDim2.new(0, 80, 0, 20)
-TargetInfoName.Text = "Target name"
-TargetInfoName.ZIndex = 2
-TargetInfoName.TextXAlignment = Enum.TextXAlignment.Left
-TargetInfoName.TextYAlignment = Enum.TextYAlignment.Top
-TargetInfoName.Parent = TargetInfoMainInfo
-local TargetInfoNameShadow = TargetInfoName:Clone()
-TargetInfoNameShadow.Size = UDim2.new(1, 0, 1, 0)
-TargetInfoNameShadow.TextTransparency = 0.5
-TargetInfoNameShadow.TextColor3 = Color3.new()
-TargetInfoNameShadow.ZIndex = 1
-TargetInfoNameShadow.Position = UDim2.new(0, 1, 0, 1)
-TargetInfoName:GetPropertyChangedSignal("Text"):Connect(function()
-	TargetInfoNameShadow.Text = TargetInfoName.Text
+local targetniggerBackground = {Enabled = false}
+local targetniggerMainFrame = Instance.new("Frame")
+targetniggerMainFrame.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
+targetniggerMainFrame.BorderSizePixel = 0
+targetniggerMainFrame.BackgroundTransparency = 1
+targetniggerMainFrame.Size = UDim2.new(0, 220, 0, 72)
+targetniggerMainFrame.Position = UDim2.new(0, 0, 0, 5)
+targetniggerMainFrame.Parent = targetnigger.GetCustomChildren()
+local targetniggerMainInfo = Instance.new("Frame")
+targetniggerMainInfo.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
+targetniggerMainInfo.Size = UDim2.new(0, 220, 0, 80)
+targetniggerMainInfo.BackgroundTransparency = 0.25
+targetniggerMainInfo.Position = UDim2.new(0, 0, 0, 0)
+targetniggerMainInfo.Name = "MainInfo"
+targetniggerMainInfo.Parent = targetniggerMainFrame
+local targetniggerName = Instance.new("TextLabel")
+targetniggerName.TextSize = 14
+targetniggerName.Font = Enum.Font.Arial
+targetniggerName.TextColor3 = Color3.fromRGB(162, 162, 162)
+targetniggerName.Position = UDim2.new(0, 70, 0, 10)
+targetniggerName.TextStrokeTransparency = 1
+targetniggerName.BackgroundTransparency = 1
+targetniggerName.Size = UDim2.new(0, 80, 0, 20)
+targetniggerName.Text = "Target name"
+targetniggerName.ZIndex = 2
+targetniggerName.TextXAlignment = Enum.TextXAlignment.Left
+targetniggerName.TextYAlignment = Enum.TextYAlignment.Top
+targetniggerName.Parent = targetniggerMainInfo
+local targetniggerNameShadow = targetniggerName:Clone()
+targetniggerNameShadow.Size = UDim2.new(1, 0, 1, 0)
+targetniggerNameShadow.TextTransparency = 0.5
+targetniggerNameShadow.TextColor3 = Color3.new()
+targetniggerNameShadow.ZIndex = 1
+targetniggerNameShadow.Position = UDim2.new(0, 1, 0, 1)
+targetniggerName:GetPropertyChangedSignal("Text"):Connect(function()
+	targetniggerNameShadow.Text = targetniggerName.Text
 end)
-TargetInfoNameShadow.Parent = TargetInfoName
-local TargetInfoHealthBackground = Instance.new("Frame")
-TargetInfoHealthBackground.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
-TargetInfoHealthBackground.Size = UDim2.new(0, 140, 0, 4)
-TargetInfoHealthBackground.Position = UDim2.new(0, 72, 0, 32)
-TargetInfoHealthBackground.Parent = TargetInfoMainInfo
-local TargetInfoHealthBackgroundShadow = Instance.new("ImageLabel")
-TargetInfoHealthBackgroundShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-TargetInfoHealthBackgroundShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-TargetInfoHealthBackgroundShadow.Image = downloadVapeAsset("vape/assets/WindowBlur.png")
-TargetInfoHealthBackgroundShadow.BackgroundTransparency = 1
-TargetInfoHealthBackgroundShadow.ImageTransparency = 0.6
-TargetInfoHealthBackgroundShadow.ZIndex = -1
-TargetInfoHealthBackgroundShadow.Size = UDim2.new(1, 6, 1, 6)
-TargetInfoHealthBackgroundShadow.ImageColor3 = Color3.new()
-TargetInfoHealthBackgroundShadow.ScaleType = Enum.ScaleType.Slice
-TargetInfoHealthBackgroundShadow.SliceCenter = Rect.new(10, 10, 118, 118)
-TargetInfoHealthBackgroundShadow.Parent = TargetInfoHealthBackground
-local TargetInfoHealth = Instance.new("Frame")
-TargetInfoHealth.BackgroundColor3 = Color3.fromRGB(40, 137, 109)
-TargetInfoHealth.Size = UDim2.new(1, 0, 1, 0)
-TargetInfoHealth.ZIndex = 3
-TargetInfoHealth.BorderSizePixel = 0
-TargetInfoHealth.Parent = TargetInfoHealthBackground
-local TargetInfoHealthExtra = Instance.new("Frame")
-TargetInfoHealthExtra.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
-TargetInfoHealthExtra.Size = UDim2.new(0, 0, 1, 0)
-TargetInfoHealthExtra.ZIndex = 4
-TargetInfoHealthExtra.BorderSizePixel = 0
-TargetInfoHealthExtra.AnchorPoint = Vector2.new(1, 0)
-TargetInfoHealthExtra.Position = UDim2.new(1, 0, 0, 0)
-TargetInfoHealthExtra.Parent = TargetInfoHealth
-local TargetInfoImage = Instance.new("ImageLabel")
-TargetInfoImage.Size = UDim2.new(0, 50, 0, 50)
-TargetInfoImage.BackgroundTransparency = 1
-TargetInfoImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..playersService.LocalPlayer.UserId..'&w=420&h=420'
-TargetInfoImage.Position = UDim2.new(0, 10, 0, 16)
-TargetInfoImage.Parent = TargetInfoMainInfo
-local TargetInfoMainInfoCorner = Instance.new("UICorner")
-TargetInfoMainInfoCorner.CornerRadius = UDim.new(0, 4)
-TargetInfoMainInfoCorner.Parent = TargetInfoMainInfo
-local TargetInfoHealthBackgroundCorner = Instance.new("UICorner")
-TargetInfoHealthBackgroundCorner.CornerRadius = UDim.new(0, 2048)
-TargetInfoHealthBackgroundCorner.Parent = TargetInfoHealthBackground
-local TargetInfoHealthCorner = Instance.new("UICorner")
-TargetInfoHealthCorner.CornerRadius = UDim.new(0, 2048)
-TargetInfoHealthCorner.Parent = TargetInfoHealth
-local TargetInfoHealthCorner2 = Instance.new("UICorner")
-TargetInfoHealthCorner2.CornerRadius = UDim.new(0, 2048)
-TargetInfoHealthCorner2.Parent = TargetInfoHealthExtra
-local TargetInfoHealthExtraCorner = Instance.new("UICorner")
-TargetInfoHealthExtraCorner.CornerRadius = UDim.new(0, 4)
-TargetInfoHealthExtraCorner.Parent = TargetInfoImage
-TargetInfo.CreateDropdown({
+targetniggerNameShadow.Parent = targetniggerName
+local targetniggerHealthBackground = Instance.new("Frame")
+targetniggerHealthBackground.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+targetniggerHealthBackground.Size = UDim2.new(0, 140, 0, 4)
+targetniggerHealthBackground.Position = UDim2.new(0, 72, 0, 32)
+targetniggerHealthBackground.Parent = targetniggerMainInfo
+local targetniggerHealthBackgroundShadow = Instance.new("ImageLabel")
+targetniggerHealthBackgroundShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+targetniggerHealthBackgroundShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+targetniggerHealthBackgroundShadow.Image = downloadVapeAsset("vape/assets/WindowBlur.png")
+targetniggerHealthBackgroundShadow.BackgroundTransparency = 1
+targetniggerHealthBackgroundShadow.ImageTransparency = 0.6
+targetniggerHealthBackgroundShadow.ZIndex = -1
+targetniggerHealthBackgroundShadow.Size = UDim2.new(1, 6, 1, 6)
+targetniggerHealthBackgroundShadow.ImageColor3 = Color3.new()
+targetniggerHealthBackgroundShadow.ScaleType = Enum.ScaleType.Slice
+targetniggerHealthBackgroundShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+targetniggerHealthBackgroundShadow.Parent = targetniggerHealthBackground
+local targetniggerHealth = Instance.new("Frame")
+targetniggerHealth.BackgroundColor3 = Color3.fromRGB(40, 137, 109)
+targetniggerHealth.Size = UDim2.new(1, 0, 1, 0)
+targetniggerHealth.ZIndex = 3
+targetniggerHealth.BorderSizePixel = 0
+targetniggerHealth.Parent = targetniggerHealthBackground
+local targetniggerHealthExtra = Instance.new("Frame")
+targetniggerHealthExtra.BackgroundColor3 = Color3.fromRGB(255, 170, 0)
+targetniggerHealthExtra.Size = UDim2.new(0, 0, 1, 0)
+targetniggerHealthExtra.ZIndex = 4
+targetniggerHealthExtra.BorderSizePixel = 0
+targetniggerHealthExtra.AnchorPoint = Vector2.new(1, 0)
+targetniggerHealthExtra.Position = UDim2.new(1, 0, 0, 0)
+targetniggerHealthExtra.Parent = targetniggerHealth
+local targetniggerImage = Instance.new("ImageLabel")
+targetniggerImage.Size = UDim2.new(0, 50, 0, 50)
+targetniggerImage.BackgroundTransparency = 1
+targetniggerImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..playersService.LocalPlayer.UserId..'&w=420&h=420'
+targetniggerImage.Position = UDim2.new(0, 10, 0, 16)
+targetniggerImage.Parent = targetniggerMainInfo
+local targetniggerMainInfoCorner = Instance.new("UICorner")
+targetniggerMainInfoCorner.CornerRadius = UDim.new(0, 4)
+targetniggerMainInfoCorner.Parent = targetniggerMainInfo
+local targetniggerHealthBackgroundCorner = Instance.new("UICorner")
+targetniggerHealthBackgroundCorner.CornerRadius = UDim.new(0, 2048)
+targetniggerHealthBackgroundCorner.Parent = targetniggerHealthBackground
+local targetniggerHealthCorner = Instance.new("UICorner")
+targetniggerHealthCorner.CornerRadius = UDim.new(0, 2048)
+targetniggerHealthCorner.Parent = targetniggerHealth
+local targetniggerHealthCorner2 = Instance.new("UICorner")
+targetniggerHealthCorner2.CornerRadius = UDim.new(0, 2048)
+targetniggerHealthCorner2.Parent = targetniggerHealthExtra
+local targetniggerHealthExtraCorner = Instance.new("UICorner")
+targetniggerHealthExtraCorner.CornerRadius = UDim.new(0, 4)
+targetniggerHealthExtraCorner.Parent = targetniggerImage
+targetnigger.CreateDropdown({
 	Name = "Font",
 	List = TextGUIFonts,
 	Function = function(val)
-		TargetInfoName.Font = Enum.Font[val]
-		TargetInfoNameShadow.Font = Enum.Font[val]
+		targetniggerName.Font = Enum.Font[val]
+		targetniggerNameShadow.Font = Enum.Font[val]
 	end
 })
 
-TargetInfoBackground = TargetInfo.CreateToggle({
+targetniggerBackground = targetnigger.CreateToggle({
 	Name = "Use Background",
 	Function = function(callback) 
-		TargetInfoMainInfo.BackgroundTransparency = callback and 0.25 or 1
-		TargetInfoName.TextColor3 = callback and Color3.fromRGB(162, 162, 162) or Color3.new(1, 1, 1)
-		TargetInfoName.Size = UDim2.new(0, 80, 0, callback and 16 or 18)
-		TargetInfoName.TextSize = callback and 14 or 15
-		TargetInfoHealthBackground.Size = UDim2.new(0, 138, 0, callback and 4 or 7)
+		targetniggerMainInfo.BackgroundTransparency = callback and 0.25 or 1
+		targetniggerName.TextColor3 = callback and Color3.fromRGB(162, 162, 162) or Color3.new(1, 1, 1)
+		targetniggerName.Size = UDim2.new(0, 80, 0, callback and 16 or 18)
+		targetniggerName.TextSize = callback and 14 or 15
+		targetniggerHealthBackground.Size = UDim2.new(0, 138, 0, callback and 4 or 7)
 	end,
 	Default = true
 })
-local TargetInfoDisplayNames = TargetInfo.CreateToggle({
+local targetniggerDisplayNames = targetnigger.CreateToggle({
 	Name = "Use Display Names",
 	Function = function(callback) end,
 	Default = true
 })
-local TargetInfoHealthTween
-TargetInfo.GetCustomChildren().Parent:GetPropertyChangedSignal("Size"):Connect(function()
-	TargetInfoMainInfo.Position = UDim2.fromOffset(0, TargetInfo.GetCustomChildren().Parent.Size ~= UDim2.fromOffset(220, 0) and -5 or 40)
+local targetniggerHealthTween
+targetnigger.GetCustomChildren().Parent:GetPropertyChangedSignal("Size"):Connect(function()
+	targetniggerMainInfo.Position = UDim2.fromOffset(0, targetnigger.GetCustomChildren().Parent.Size ~= UDim2.fromOffset(220, 0) and -5 or 40)
 end)
-shared.VapeTargetInfo = {
+shared.Vapetargetnigger = {
 	UpdateInfo = function(tab, targetsize) 
-		if TargetInfo.GetCustomChildren().Parent then
+		if targetnigger.GetCustomChildren().Parent then
 			local hasTarget = false
-			for _, v in pairs(shared.VapeTargetInfo.Targets) do
+			for _, v in pairs(shared.Vapetargetnigger.Targets) do
 				hasTarget = true
-				TargetInfoImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..v.Player.UserId..'&w=420&h=420'
-				TargetInfoHealth:TweenSize(UDim2.new(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
-				TargetInfoHealthExtra:TweenSize(UDim2.new(math.clamp((v.Humanoid.Health / v.Humanoid.MaxHealth) - 1, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
-				if TargetInfoHealthTween then TargetInfoHealthTween:Cancel() end
-				TargetInfoHealthTween = game:GetService("TweenService"):Create(TargetInfoHealth, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundColor3 = newHealthColor(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1))})
-				TargetInfoHealthTween:Play()
-				TargetInfoName.Text = (TargetInfoDisplayNames.Enabled and v.Player.DisplayName or v.Player.Name)
+				targetniggerImage.Image = 'rbxthumb://type=AvatarHeadShot&id='..v.Player.UserId..'&w=420&h=420'
+				targetniggerHealth:TweenSize(UDim2.new(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
+				targetniggerHealthExtra:TweenSize(UDim2.new(math.clamp((v.Humanoid.Health / v.Humanoid.MaxHealth) - 1, 0, 1), 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25, true)
+				if targetniggerHealthTween then targetniggerHealthTween:Cancel() end
+				targetniggerHealthTween = game:GetService("TweenService"):Create(targetniggerHealth, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundColor3 = newHealthColor(math.clamp(v.Humanoid.Health / v.Humanoid.MaxHealth, 0, 1))})
+				targetniggerHealthTween:Play()
+				targetniggerName.Text = (targetniggerDisplayNames.Enabled and v.Player.DisplayName or v.Player.Name)
 				break
 			end
-			TargetInfoMainInfo.Visible = hasTarget or (TargetInfo.GetCustomChildren().Parent.Size ~= UDim2.new(0, 220, 0, 0))
+			targetniggerMainInfo.Visible = hasTarget or (targetnigger.GetCustomChildren().Parent.Size ~= UDim2.new(0, 220, 0, 0))
 		end
 	end,
 	Targets = {},
-	Object = TargetInfo
+	Object = targetnigger
 }
 task.spawn(function()
 	repeat
-		if shared.VapeTargetInfo then
-			shared.VapeTargetInfo.UpdateInfo()
+		if shared.Vapetargetnigger then
+			shared.Vapetargetnigger.UpdateInfo()
 		end
 		task.wait()
 	until not vapeInjected
 end)
 GUI.CreateCustomToggle({
 	Name = "Target Info", 
-	Icon = "vape/assets/TargetInfoIcon2.png", 
-	Function = function(callback) TargetInfo.SetVisible(callback) end,
+	Icon = "vape/assets/targetniggerIcon2.png", 
+	Function = function(callback) targetnigger.SetVisible(callback) end,
 	Priority = 1
 })
 local GeneralSettings = GUI.CreateDivider2("General Settings")
@@ -1902,7 +1902,7 @@ GUISettings.CreateButton2({
 			TargetsWindow = 8,
 			ProfilesWindow = 9,
 			["Text GUICustomWindow"] = 10,
-			TargetInfoCustomWindow = 11,
+			targetniggerCustomWindow = 11,
 			RadarCustomWindow = 12,
 		}
 		local storedpos = {}
