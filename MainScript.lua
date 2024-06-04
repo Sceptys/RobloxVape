@@ -143,7 +143,7 @@ local function vapeGithubRequest(scripturl)
 				displayErrorPopup("The connection to github is taking a while, Please be patient.")
 			end
 		end)
-		suc, res = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/"..scripturl, true) end)
+		suc, res = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/Vapev3ForRoblox/"..readfile("vape/commithash.txt").."/"..scripturl, true) end)
 		if not suc or res == "404: Not Found" then
 			displayErrorPopup("Failed to connect to github : vape/"..scripturl.." : "..res)
 			error(res)
@@ -227,7 +227,7 @@ if not isfile("vape/CustomModules/cachechecked.txt") then
 				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 					local last = v:split('\\')
 					last = last[#last]
-					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..last) end)
+					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/Vapev3ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..last) end)
 					if suc and publicrepo and publicrepo ~= "404: Not Found" then
 						writefile("vape/CustomModules/"..last, "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
 					end
@@ -831,15 +831,15 @@ VapeLogo.BorderSizePixel = 0
 VapeLogo.BackgroundTransparency = 1
 VapeLogo.Visible = true
 VapeLogo.Image = downloadVapeAsset("vape/assets/VapeLogo3.png")
-local VapeLogoV4 = Instance.new("ImageLabel")
-VapeLogoV4.Parent = VapeLogo
-VapeLogoV4.Size = UDim2.new(0, 41, 0, 24)
-VapeLogoV4.Name = "Logo2"
-VapeLogoV4.Position = UDim2.new(1, 0, 0, 1)
-VapeLogoV4.BorderSizePixel = 0
-VapeLogoV4.BackgroundColor3 = Color3.new()
-VapeLogoV4.BackgroundTransparency = 1
-VapeLogoV4.Image = downloadVapeAsset("vape/assets/VapeLogo4.png")
+local VapeLogov3 = Instance.new("ImageLabel")
+VapeLogov3.Parent = VapeLogo
+VapeLogov3.Size = UDim2.new(0, 41, 0, 24)
+VapeLogov3.Name = "Logo2"
+VapeLogov3.Position = UDim2.new(1, 0, 0, 1)
+VapeLogov3.BorderSizePixel = 0
+VapeLogov3.BackgroundColor3 = Color3.new()
+VapeLogov3.BackgroundTransparency = 1
+VapeLogov3.Image = downloadVapeAsset("vape/assets/VapeLogo4.png")
 local VapeLogoShadow = VapeLogo:Clone()
 VapeLogoShadow.ImageColor3 = Color3.new()
 VapeLogoShadow.ImageTransparency = 0.5
@@ -855,7 +855,7 @@ VapeLogoGradient.Rotation = 90
 VapeLogoGradient.Parent = VapeLogo
 local VapeLogoGradient2 = Instance.new("UIGradient")
 VapeLogoGradient2.Rotation = 90
-VapeLogoGradient2.Parent = VapeLogoV4
+VapeLogoGradient2.Parent = VapeLogov3
 local VapeText = Instance.new("TextLabel")
 VapeText.Parent = VapeLogoFrame
 VapeText.Size = UDim2.new(1, 0, 1, 0)
@@ -1108,12 +1108,12 @@ TextGUIMode = TextGUI.CreateDropdown({
 			VapeLogoDrawing.Position = VapeLogo.AbsolutePosition + Vector2.new(0, 36)
 			VapeLogoDrawing.ZIndex = 2
 			VapeLogoDrawing.Visible = VapeLogo.Visible
-			local VapeLogoV4Drawing = Drawing.new("Image")
-			VapeLogoV4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
-			VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
-			VapeLogoV4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(0, 36)
-			VapeLogoV4Drawing.ZIndex = 2
-			VapeLogoV4Drawing.Visible = VapeLogo.Visible
+			local VapeLogov3Drawing = Drawing.new("Image")
+			VapeLogov3Drawing.Data = readfile("vape/assets/VapeLogo4.png")
+			VapeLogov3Drawing.Size = VapeLogov3.AbsoluteSize
+			VapeLogov3Drawing.Position = VapeLogov3.AbsolutePosition + Vector2.new(0, 36)
+			VapeLogov3Drawing.ZIndex = 2
+			VapeLogov3Drawing.Visible = VapeLogo.Visible
 			local VapeLogoShadowDrawing = Drawing.new("Image")
 			VapeLogoShadowDrawing.Data = readfile("vape/assets/VapeLogo3.png")
 			VapeLogoShadowDrawing.Size = VapeLogo.AbsoluteSize
@@ -1122,8 +1122,8 @@ TextGUIMode = TextGUI.CreateDropdown({
 			VapeLogoShadowDrawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
 			local VapeLogo4Drawing = Drawing.new("Image")
 			VapeLogo4Drawing.Data = readfile("vape/assets/VapeLogo4.png")
-			VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
-			VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
+			VapeLogo4Drawing.Size = VapeLogov3.AbsoluteSize
+			VapeLogo4Drawing.Position = VapeLogov3.AbsolutePosition + Vector2.new(1, 37)
 			VapeLogo4Drawing.Transparency = 0.5
 			VapeLogo4Drawing.Visible = VapeLogo.Visible and VapeLogoShadow.Visible
 			local VapeCustomDrawingText = Drawing.new("Text")
@@ -1146,7 +1146,7 @@ TextGUIMode = TextGUI.CreateDropdown({
 				VapeLogoDrawing.Color = VapeLogoGradient.Color.Keypoints[1].Value
 			end)
 			table.insert(TextGUIObjects.Logo, VapeLogoDrawing)
-			table.insert(TextGUIObjects.Logo, VapeLogoV4Drawing)
+			table.insert(TextGUIObjects.Logo, VapeLogov3Drawing)
 			table.insert(TextGUIObjects.Logo, VapeLogoShadowDrawing)
 			table.insert(TextGUIObjects.Logo, VapeLogo4Drawing)
 			table.insert(TextGUIObjects.Logo, VapeCustomDrawingText)
@@ -1161,13 +1161,13 @@ TextGUIMode = TextGUI.CreateDropdown({
 				VapeCustomDrawingText.Size = 30 * VapeScale.Scale
 				VapeCustomDrawingShadow.Size = 30 * VapeScale.Scale
 			end))
-			table.insert(TextGUIConnections, VapeLogoV4:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
-				VapeLogoV4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(0, 36)
-				VapeLogo4Drawing.Position = VapeLogoV4.AbsolutePosition + Vector2.new(1, 37)
+			table.insert(TextGUIConnections, VapeLogov3:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				VapeLogov3Drawing.Position = VapeLogov3.AbsolutePosition + Vector2.new(0, 36)
+				VapeLogo4Drawing.Position = VapeLogov3.AbsolutePosition + Vector2.new(1, 37)
 			end))
-			table.insert(TextGUIConnections, VapeLogoV4:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-				VapeLogoV4Drawing.Size = VapeLogoV4.AbsoluteSize
-				VapeLogo4Drawing.Size = VapeLogoV4.AbsoluteSize
+			table.insert(TextGUIConnections, VapeLogov3:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				VapeLogov3Drawing.Size = VapeLogov3.AbsoluteSize
+				VapeLogo4Drawing.Size = VapeLogov3.AbsoluteSize
 			end))
 			table.insert(TextGUIConnections, VapeCustomText:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
 				VapeCustomDrawingText.Position = VapeCustomText.AbsolutePosition + Vector2.new(VapeText.TextXAlignment == Enum.TextXAlignment.Right and (VapeCustomText.AbsoluteSize.X - VapeCustomDrawingText.TextBounds.X), 32)
@@ -1185,7 +1185,7 @@ TextGUIMode = TextGUI.CreateDropdown({
 			end))
 			table.insert(TextGUIConnections, VapeLogo:GetPropertyChangedSignal("Visible"):Connect(function()
 				VapeLogoDrawing.Visible = VapeLogo.Visible
-				VapeLogoV4Drawing.Visible = VapeLogo.Visible
+				VapeLogov3Drawing.Visible = VapeLogo.Visible
 				VapeLogoShadowDrawing.Visible = VapeLogo.Visible and VapeTextExtra.Visible
 				VapeLogo4Drawing.Visible = VapeLogo.Visible and VapeTextExtra.Visible
 			end))
@@ -1795,7 +1795,7 @@ local teleportConnection = playersService.LocalPlayer.OnTeleport:Connect(functio
 			if shared.VapeDeveloper then 
 				loadstring(readfile("vape/NewMainScript.lua"))() 
 			else 
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/NewMainScript.lua", true))() 
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/Vapev3ForRoblox/"..readfile("vape/commithash.txt").."/NewMainScript.lua", true))() 
 			end
 		]]
 		if shared.VapeDeveloper then
@@ -1944,7 +1944,7 @@ local function loadVape()
 			loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
 		else
 			if not shared.VapeDeveloper then
-				local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..game.PlaceId..".lua") end)
+				local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/Vapev3ForRoblox/"..readfile("vape/commithash.txt").."/CustomModules/"..game.PlaceId..".lua") end)
 				if suc and publicrepo and publicrepo ~= "404: Not Found" then
 					writefile("vape/CustomModules/"..game.PlaceId..".lua", "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
 					loadstring(readfile("vape/CustomModules/"..game.PlaceId..".lua"))()
